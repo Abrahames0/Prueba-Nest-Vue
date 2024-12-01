@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: salvaUser
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: nestdb
+    ports:
+      - 5499:5432
