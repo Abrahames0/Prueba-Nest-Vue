@@ -14,4 +14,15 @@ export class AuthController {
 
     return this.authService.login({ id: user.id, email: user.email });
   }
+
+  @Post('verify-code')
+  async verifyCode(@Body() body: { email: string; code: string }) {
+    const { email, code } = body;
+    const accessToken = await this.authService.verifyCode(email, code);
+
+    return {
+      message: 'Verificación exitosa.',
+      accessToken,
+    };
+  }
 }

@@ -8,10 +8,7 @@ async function bootstrap() {
     whitelist: true
   }));
 
-  app.enableCors({
-
-    origin: 'http://localhost/',
-  })
-  await app.listen(3000);
+  app.enableCors()
+  await app.listen(4000);
 }
 bootstrap();

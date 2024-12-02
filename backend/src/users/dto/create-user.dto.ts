@@ -15,12 +15,12 @@ export class CreateUserDto {
   contact: string;
 
   @IsString()
-  @MinLength(8, { message: 'La contraseña debe tener al menos 8 caracteres.' })
+  @MinLength(10, { message: 'La contraseña debe tener al menos 10 caracteres.' })
   @IsNotEmpty({ message: 'La contraseña es obligatoria.' })
   password: string;
 
   @IsString()
-  @MinLength(8, { message: 'La confirmación de la contraseña debe tener al menos 8 caracteres.' })
+  @MinLength(10, { message: 'La confirmación de la contraseña debe tener al menos 10 caracteres.' })
   @IsNotEmpty({ message: 'La confirmación de la contraseña es obligatoria.' })
   confirmPassword: string;
 }
