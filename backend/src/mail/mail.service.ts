@@ -17,7 +17,6 @@ export class MailService {
     });
   }
 
-  // Método para enviar correos
   async sendMail(to: string, subject: string, text: string, html?: string) {
     const mailOptions = {
       from: `"Prueba" <${process.env.MAIL_USER}>`,

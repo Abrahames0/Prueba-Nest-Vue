@@ -41,7 +41,6 @@ export class UsersService {
         },
       });
 
-      // Registrar en el log de base de datos
       await this.logService.createLog(
         'create',
         'User',
@@ -50,7 +49,6 @@ export class UsersService {
 
       console.log(`Usuario creado exitosamente: ${newUser.email}`);
 
-      // Enviar correo al usuario
       await this.mailService.sendMail(
         newUser.email,
         'Bienvenido a la prueba',
@@ -137,7 +135,6 @@ export class UsersService {
       throw new Error('Error al actualizar el usuario: ' + error.message);
     }
   }
-  
 
   //Actualizacion parcial
   async updatePartialUser(id: string, user: UpdateUserDto) {
