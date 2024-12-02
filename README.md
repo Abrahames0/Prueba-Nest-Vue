@@ -53,7 +53,7 @@ Para ejecutar la aplicación localmente usando **Docker**, sigue los pasos a con
    Esto construirá los contenedores para el **backend**, **frontend**, y **PostgreSQL**, y los levantará en segundo plano.
 
 4. Una vez que los contenedores estén corriendo, puedes acceder a los siguientes servicios:
-   - **Frontend**: Disponible en [http://localhost:3000](http://localhost:3000)
+   - **Frontend**: Disponible en [http://localhost:80](http://localhost:80)
    - **Backend API**: Disponible en [http://localhost:4000](http://localhost:4000)
    - **Base de Datos PostgreSQL**: Disponible en el puerto `5432`
 
