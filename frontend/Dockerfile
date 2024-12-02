@@ -1,23 +1,24 @@
-# Usa la imagen oficial de Node como base
-FROM node:18-alpine
+# Utilizar una imagen base oficial de Node.js
+FROM node:18
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiar package.json y package-lock.json
+# Copiar los archivos de configuración y dependencias
 COPY package*.json ./
 
-# Instalar dependencias
+# Instalar las dependencias
 RUN npm install
 
-# Copiar todo el código fuente al contenedor
-COPY . .
+# Copiar todo el código del proyecto
+COPY . /app
 
-# Construir la aplicación Nuxt para producción
+# Construir el proyecto Nuxt
 RUN npm run build
 
-# Exponer el puerto que utiliza Nuxt 
+# Exponer el puerto donde se ejecutará el servidor Nuxt
+ENV HOST=0.0.0.0
 EXPOSE 3000
 
-# Comando para ejecutar la aplicación en modo producción
-CMD ["npm", "run", "start"]
+# Comando para iniciar la aplicación
+ENTRYPOINT [ "node", ".output/server/index.mjs" ]

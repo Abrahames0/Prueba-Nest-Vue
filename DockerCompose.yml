@@ -2,9 +2,44 @@ services:
   db:
     image: postgres
     restart: always
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_USER: salvaUser
       POSTGRES_PASSWORD: qwerty
       POSTGRES_DB: nestdb
+    
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: always
+    ports: 
+     - 4000:4000
+    environment:
+      - DATABASE_URL=postgresql://salvaUser:qwerty@db:5432/nestdb?schema=public
+      - JWT_SECRET=3bac023a17fd5c94debd91d399a4f137d64a901c3b1dbcd294271e33e27cd9ec
+      - JWT_EXPIRES_IN=4h
+      - MAIL_HOST=smtp.gmail.com
+      - MAIL_PORT=587
+      - MAIL_USER=abtaham0212@gmail.com
+      - MAIL_PASSWORD=opgb mzhi fzyt sghn
+    depends_on:
+      - db
+    command: >
+     sh -c "
+     npx prisma migrate deploy &&
+     npm run start:prod
+     "
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: always
     ports:
-      - 5499:5432
+      - 80:3000
+    depends_on:
+      - backend

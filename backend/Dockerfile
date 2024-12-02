@@ -32,7 +32,7 @@ COPY --from=builder /usr/src/app/dist ./dist
 COPY --from=builder /usr/src/app/prisma ./prisma
 
 # Expone el puerto que usa tu aplicación
-EXPOSE 3000
+EXPOSE 4000
 
 # Comando para ejecutar la aplicación
 CMD ["node", "dist/main"]
